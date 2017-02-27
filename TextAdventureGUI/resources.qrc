@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>Hungarian.ogg</file>
+        <file>dead.wav</file>
+        <file>button.wav</file>
+        <file>kaching.ogg</file>
+    </qresource>
+</RCC>
