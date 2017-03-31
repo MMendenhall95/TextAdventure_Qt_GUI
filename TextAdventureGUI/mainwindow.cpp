@@ -18,17 +18,17 @@ MainWindow::MainWindow(QWidget *parent) :
     pStat = new Stats();
     atk = new Attack();
     monster = new Attack();
-    background = new QMediaPlayer();
-    dead = new QMediaPlayer();
-    button = new QMediaPlayer();
-    purchase = new QMediaPlayer();
+    //background = new QMediaPlayer();
+    //dead = new QMediaPlayer();
+    //button = new QMediaPlayer();
+    //purchase = new QMediaPlayer();
 
 
-    background->setMedia(QUrl("qrc:/sounds/Hungarian.ogg"));
-    background->play();
-    dead->setMedia(QUrl("qrc:/sounds/dead.wav"));
-    button->setMedia(QUrl("qrc:/sounds/button.wav"));
-    purchase->setMedia(QUrl("qrc:/sounds/kaching.ogg"));
+   // background->setMedia(QUrl("qrc:/sounds/Hungarian.ogg"));
+    //background->play();
+    //dead->setMedia(QUrl("qrc:/sounds/dead.wav"));
+    //button->setMedia(QUrl("qrc:/sounds/button.wav"));
+    //purchase->setMedia(QUrl("qrc:/sounds/kaching.ogg"));
     ui->textMap->setAutoFillBackground(false);
     ui->textMap->setFrameStyle(QFrame::NoFrame);
 //asks for entry then generates map based on input (default is 0) and then sets everything else up
@@ -82,7 +82,7 @@ MainWindow::~MainWindow()
 //generates a new map and resets your stats
 void MainWindow::on_mapGen_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -90,7 +90,7 @@ void MainWindow::on_mapGen_clicked()
     {
         button->play();
     }
-    ui->textMap->setText("");
+    */ui->textMap->setText("");
 
     if (ui->rdmCb->checkState()){
 
@@ -127,7 +127,7 @@ void MainWindow::on_mapGen_clicked()
 //movement
 void MainWindow::on_pbUp_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -135,7 +135,7 @@ void MainWindow::on_pbUp_clicked()
     {
         button->play();
     }
-    ui->textMap->setText("");
+    */ui->textMap->setText("");
     map->setEvent(false);
     for (auto &data : map->pMove(up)){
         ui->textMap->append(data);
@@ -162,7 +162,7 @@ void MainWindow::on_pbUp_clicked()
 //move down
 void MainWindow::on_pbDown_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -170,7 +170,7 @@ void MainWindow::on_pbDown_clicked()
     {
         button->play();
     }
-    ui->textMap->setText("");
+    */ui->textMap->setText("");
     map->setEvent(false);
     for (auto &data : map->pMove(down)){
         ui->textMap->append(data);
@@ -197,7 +197,7 @@ void MainWindow::on_pbDown_clicked()
 //move left
 void MainWindow::on_pbLeft_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -205,7 +205,7 @@ void MainWindow::on_pbLeft_clicked()
     {
         button->play();
     }
-    ui->textMap->setText("");
+    */ui->textMap->setText("");
     map->setEvent(false);
     for (auto &data : map->pMove(left)){
         ui->textMap->append(data);
@@ -232,7 +232,7 @@ void MainWindow::on_pbLeft_clicked()
 //move right
 void MainWindow::on_pbRight_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -240,7 +240,7 @@ void MainWindow::on_pbRight_clicked()
     {
         button->play();
     }
-    ui->textMap->setText("");
+    */ui->textMap->setText("");
     map->setEvent(false);
     for (auto &data : map->pMove(right)){
         ui->textMap->append(data);
@@ -271,7 +271,7 @@ void MainWindow::on_pbRight_clicked()
 //set random generation
 void MainWindow::on_rdmCb_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+    /*if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -280,12 +280,13 @@ void MainWindow::on_rdmCb_clicked()
         button->play();
     }
     ui->lvlSed->setDisabled(ui->rdmCb->checkState());
+*/
 }
 
 //combat button
 void MainWindow::on_figBtn_clicked()
 {
-    if(button->state() == QMediaPlayer::PlayingState)
+  /*  if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
     }
@@ -293,7 +294,7 @@ void MainWindow::on_figBtn_clicked()
     {
         button->play();
     }
-
+*/
     ui->healthBar->setValue(pStat->getHealth() - monster->getDif());
     pStat->setHealth(pStat->getHealth() - monster->getDif());
     ui->pbUp->setDisabled(false);
@@ -318,16 +319,19 @@ void MainWindow::on_figBtn_clicked()
         ui->lvlSed->setDisabled(true);
         ui->hePurBtn->setDisabled(true);
         ui->eveTxt->setText("GAME OVER\nYOU DIED!");
-        if(background->state() == QMediaPlayer::PlayingState){
+        /*if(background->state() == QMediaPlayer::PlayingState){
             background->stop();
         }
         dead->play();
-    }
+*/
+}
+
 }
 
 //run away!
 void MainWindow::on_rnBtn_clicked()
 {
+    /*
     if(button->state() == QMediaPlayer::PlayingState)
     {
         button->setPosition(0);
@@ -336,7 +340,7 @@ void MainWindow::on_rnBtn_clicked()
     {
         button->play();
     }
-    if(monster->run()){
+    */if(monster->run()){
         ui->eveTxt->setText("You Got Away!");
         ui->pbUp->setDisabled(false);
         ui->pbDown->setDisabled(false);
@@ -363,10 +367,11 @@ void MainWindow::on_rnBtn_clicked()
             ui->lvlSed->setDisabled(true);
             ui->hePurBtn->setDisabled(true);
             ui->eveTxt->setText("GAME OVER\nYOU DIED!");
-            if(background->state() == QMediaPlayer::PlayingState){
+            /*if(background->state() == QMediaPlayer::PlayingState){
                 background->stop();
             }
             dead->play();
+            */
         }
 
     }
@@ -385,7 +390,7 @@ void MainWindow::on_hePurBtn_clicked()
         ui->healthBar->setMaximum(pStat->getMaxHealth());
         ui->healthBar->setMinimum(0);
         ui->healthBar->setValue(pStat->getHealth());
-        purchase->play();
+        //purchase->play();
     }
     else
         ui->eveTxt->setText("I.S.F.");

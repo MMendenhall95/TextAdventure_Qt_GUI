@@ -5,7 +5,7 @@
 #include "stats.h"
 #include "attack.h"
 #include <QMainWindow>
-#include <QMediaPlayer>
+//#include <QMediaPlayer>
 #include <QUrl>
 
 namespace Ui {
@@ -21,10 +21,10 @@ private:
     QString te;
     Attack *monster;
     Stats *pStat;
-    QMediaPlayer *button;
-    QMediaPlayer *background;
-    QMediaPlayer *dead;
-    QMediaPlayer *purchase;
+   // QMediaPlayer *button;
+   // QMediaPlayer *background;
+   // QMediaPlayer *dead;
+   // QMediaPlayer *purchase;
     enum direction{up, down, left, right};
 
 public:
